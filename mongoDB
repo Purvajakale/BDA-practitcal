@@ -1,0 +1,25 @@
+Linux
+
+open shell
+
+1. start mongodb
+    1.1 `sudo service mongod start`
+    1.2 mongo
+
+2.db.gethelp() : command will tell u all the methods
+
+3.exit : command simply quits mongo server
+
+4. show dbs : config for ur local db
+
+5. use testDB : switches to database
+
+6. db.createCollection("contacts") : create collections in db
+
+7. show collections;
+
+8. db.users.insert({"name" : "xyz" });
+
+9. db.users.find();
+
+8. db.dropDatabase() : delete database
