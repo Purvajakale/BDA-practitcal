@@ -1,0 +1,24 @@
+*******  matrix multiplication **********
+
+
+1. create database multiplication;
+2. create table m_matrix(matrix string,r int,c int,value int) row format delimited fields terminated by ',' lines terminated by '\n';
+3. create table n_matrix(matrix string,r int,c int,value int) row format delimited fields terminated by ',' lines terminated by '\n';
+4. load data local inpath '/home/cloudera/n.txt' into table n_matrix;
+5. load data local inpath '/home/cloudera/m.txt' into table m_matrix;
+6.
+select temp.r, temp.c, SUM(temp.value)
+
+from (select m.r as r, n.c as c, (m.value*n.value) as value from m_matrix m, n_matrix n where m.c=n.r) temp 
+
+group by temp.r, temp.c;
+
+
+************ word count ********
+1. create database library;
+2. create table line1(line string) row format delimited lines terminated by '\n';
+3. load data local inpath '/home/cloudera/file.txt' into table line1;
+4. select word, COUNT(word)
+   from (Select explode(split(line,' '))as word from line1) temp
+   group by word;
+
